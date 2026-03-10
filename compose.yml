@@ -1,41 +1,41 @@
 ---
 services:
   db:
-    image: shaikmustafa/flm2026:dbimage
+    image: manilallidevops/pythonapp:dbimage
     ports:
       - "3306:3306"
     deploy:
-      replicas: 1
+      replicas: 3
   auth_service:
-    image: shaikmustafa/flm2026:authimage
+    image: manilallidevops/pythonapp:authimage
     ports:
       - "5001:5001"
     deploy:
-      replicas: 1
+      replicas: 3
     depends_on:
       - db
   book_service:
-    image: shaikmustafa/flm2026:bookimage
+    image: manilallidevops/pythonapp:bookimage
     ports:
       - "5002:5002"
     deploy:
-      replicas: 1
+      replicas: 3
     depends_on:
       - db
   borrow_service:
-    image: shaikmustafa/flm2026:borrowimage
+    image: manilallidevops/pythonapp:borrowimage
     ports:
       - "5003:5003"
     deploy:
-      replicas: 1
+      replicas: 3
     depends_on:
       - db
   app_service:
-    image: shaikmustafa/flm2026:appimage
+    image: manilallidevops/pythonapp:appimage
     ports:
       - "5000:5000"
     deploy:
-      replicas: 1
+      replicas: 3
     depends_on:
       - auth_service
       - book_service
